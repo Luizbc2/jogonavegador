@@ -102,6 +102,7 @@ export class UpgradeOverlay {
 
     const tabs = createHudElement("div", "game-modal-workshop-tabs");
     tabs.setAttribute("role", "tablist");
+    tabs.setAttribute("aria-label", "Categorias da oficina");
     this.pickaxesTab = createWorkshopTabButton("PICARETAS");
     this.upgradesTab = createWorkshopTabButton("UPGRADES");
     this.pickaxesTab.id = "workshop-tab-pickaxes";
