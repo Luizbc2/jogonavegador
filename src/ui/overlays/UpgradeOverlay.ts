@@ -256,6 +256,8 @@ export class UpgradeOverlay {
     this.pageText.title = `Página ${this.pageIndex + 1} de ${totalPages}`;
     this.previousButton.disabled = this.pageIndex <= 0;
     this.nextButton.disabled = this.pageIndex >= totalPages - 1;
+    this.previousButton.setAttribute("aria-disabled", String(this.previousButton.disabled));
+    this.nextButton.setAttribute("aria-disabled", String(this.nextButton.disabled));
   }
 
   private renderUpgrades(snapshot: OverlaySnapshot) {
