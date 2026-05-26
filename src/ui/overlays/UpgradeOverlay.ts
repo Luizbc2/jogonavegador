@@ -236,6 +236,10 @@ export class UpgradeOverlay {
     this.pickaxeCollectionValue.textContent = `${ownedPickaxes}/${snapshot.pickaxes.length}`;
     this.upgradeInvestmentValue.textContent = formatNumber(upgradeLevels);
     this.depthValue.textContent = `${formatNumber(snapshot.maxDepthReached)}m`;
+    this.coinsValue.title = `${formatNumber(snapshot.coins)} moedas disponíveis`;
+    this.pickaxeCollectionValue.title = `${ownedPickaxes} de ${snapshot.pickaxes.length} picaretas compradas`;
+    this.upgradeInvestmentValue.title = `${upgradeLevels} níveis de upgrade comprados`;
+    this.depthValue.title = `Profundidade máxima: ${formatNumber(snapshot.maxDepthReached)}m`;
     this.renderTabs();
     this.renderPickaxes(snapshot);
     this.renderUpgrades(snapshot);
