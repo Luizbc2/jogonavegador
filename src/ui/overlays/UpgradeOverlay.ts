@@ -402,6 +402,9 @@ function createWorkshopButton(label: string, tone: "primary" | "secondary") {
 function createUpgradeRow(line: UpgradeShopLine, snapshot: OverlaySnapshot) {
   const row = createHudElement("article", "game-modal-upgrade-row");
   row.classList.toggle("is-maxed", line.cost === null);
+  row.setAttribute("role", "listitem");
+  row.setAttribute("aria-label", getUpgradeRowTitle(line));
+  row.title = getUpgradeRowTitle(line);
 
   const copy = createHudElement("div", "game-modal-upgrade-row__copy");
   const title = createHudElement("h3", "game-modal-upgrade-row__title", line.upgrade.name);
@@ -429,6 +432,14 @@ function createUpgradeRow(line: UpgradeShopLine, snapshot: OverlaySnapshot) {
 
   row.append(copy, meta, action);
   return row;
+}
+
+function getUpgradeRowTitle(line: UpgradeShopLine) {
+  if (line.cost === null) {
+    return `${line.upgrade.name} no nível máximo`;
+  }
+
+  return `${line.upgrade.name}: nível ${line.level}/${line.upgrade.maxLevel}, custa ${formatNumber(line.cost)} moedas`;
 }
 
 function formatUpgradeCurrentEffect(line: UpgradeShopLine) {
