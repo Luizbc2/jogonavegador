@@ -118,6 +118,8 @@ export class UpgradeOverlay {
     const carousel = createHudElement("div", "game-modal-workshop-carousel");
     this.previousButton = createArrowButton("<");
     this.carouselBody = createHudElement("div", "game-modal-workshop-carousel__body") as HTMLDivElement;
+    this.carouselBody.setAttribute("role", "list");
+    this.carouselBody.setAttribute("aria-label", "Picaretas disponíveis");
     this.nextButton = createArrowButton(">");
     carousel.append(this.previousButton, this.carouselBody, this.nextButton);
 
@@ -131,6 +133,8 @@ export class UpgradeOverlay {
     this.upgradesPanel.setAttribute("role", "tabpanel");
     this.upgradesPanel.setAttribute("aria-labelledby", this.upgradesTab.id);
     this.upgradesBody = createHudElement("div", "game-modal-upgrade-list") as HTMLDivElement;
+    this.upgradesBody.setAttribute("role", "list");
+    this.upgradesBody.setAttribute("aria-label", "Upgrades disponíveis");
     this.upgradesPanel.append(this.upgradesBody);
 
     const actions = createHudElement("div", "game-modal-actions game-modal-actions--center");
