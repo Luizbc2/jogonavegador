@@ -414,6 +414,9 @@ function createUpgradeRow(line: UpgradeShopLine, snapshot: OverlaySnapshot) {
   copy.append(title, description, currentEffect, nextEffect);
 
   const meta = createHudElement("div", "game-modal-upgrade-row__meta");
+  meta.title = line.cost === null
+    ? `Nível ${line.level}/${line.upgrade.maxLevel} completo`
+    : `Nível ${line.level}/${line.upgrade.maxLevel}, custo ${formatNumber(line.cost)} moedas`;
   meta.append(
     createHudElement("span", "", `NÍVEL ${line.level}/${line.upgrade.maxLevel}`),
     createHudElement("strong", "", line.cost === null ? "Completo" : `${formatNumber(line.cost)} moedas`),
