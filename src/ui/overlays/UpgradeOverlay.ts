@@ -327,6 +327,7 @@ function createPickaxeCard(line: PickaxeShopLine, snapshot: OverlaySnapshot) {
 
   const action = createWorkshopButton(getActionLabel(line, snapshot), line.canBuy || line.owned ? "primary" : "secondary");
   action.disabled = line.locked || line.equipped || (!line.owned && !line.canBuy);
+  action.setAttribute("aria-disabled", String(action.disabled));
   action.title = action.textContent ?? line.pickaxe.name;
   action.setAttribute(
     "aria-label",
@@ -430,6 +431,7 @@ function createUpgradeRow(line: UpgradeShopLine, snapshot: OverlaySnapshot) {
 
   const action = createWorkshopButton(getUpgradeActionLabel(line, snapshot.coins), line.canBuy ? "primary" : "secondary");
   action.disabled = !line.canBuy;
+  action.setAttribute("aria-disabled", String(action.disabled));
   action.title = action.textContent ?? line.upgrade.name;
   action.setAttribute(
     "aria-label",
