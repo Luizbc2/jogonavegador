@@ -338,6 +338,10 @@ function createPickaxeCard(line: PickaxeShopLine, snapshot: OverlaySnapshot) {
         : `Comprar ${line.pickaxe.name}`,
   );
   action.onclick = () => {
+    if (action.disabled) {
+      return;
+    }
+
     if (line.owned) {
       snapshot.onEquip(line.pickaxe.id);
       return;
@@ -439,7 +443,13 @@ function createUpgradeRow(line: UpgradeShopLine, snapshot: OverlaySnapshot) {
       ? `${line.upgrade.name} completo`
       : `Comprar upgrade ${line.upgrade.name}`,
   );
-  action.onclick = () => snapshot.onUpgradeBuy(line.upgrade.id);
+  action.onclick = () => {
+    if (action.disabled) {
+      return;
+    }
+
+    snapshot.onUpgradeBuy(line.upgrade.id);
+  };
 
   row.append(copy, meta, action);
   return row;
